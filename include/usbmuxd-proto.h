@@ -29,7 +29,15 @@
 #if defined(WIN32) || defined(__CYGWIN__)
 #define USBMUXD_SOCKET_PORT 27015
 #else
+
+
+#ifdef __ANDROID__
+#define USBMUXD_SOCKET_FILE "/data/data/com.mtn.move.to.ios.watransfer/files/run/usbmuxd"
+#else
 #define USBMUXD_SOCKET_FILE "/var/run/usbmuxd"
+#endif
+
+
 #endif
 
 #ifdef __cplusplus
