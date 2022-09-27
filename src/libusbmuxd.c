@@ -76,7 +76,14 @@ extern int _NSGetExecutablePath(char* buf, uint32_t* bufsize);
 #include <pthread.h>
 #define EVENT_SIZE  (sizeof (struct inotify_event))
 #define EVENT_BUF_LEN (1024 * (EVENT_SIZE + 16))
+
+#ifdef __ANDROID__
+#define USBMUXD_DIRNAME "/data/data/com.mtn.move.to.ios.watransfer/files/run"
+#else
 #define USBMUXD_DIRNAME "/var/run"
+#endif
+
+
 #define USBMUXD_SOCKET_NAME "usbmuxd"
 static int use_inotify = 1;
 #endif /* HAVE_INOTIFY */
