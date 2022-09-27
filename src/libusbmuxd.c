@@ -116,7 +116,7 @@ static char *prog_name = NULL;
 // threads
 #include <libimobiledevice-glue/thread.h>
 
-static int libusbmuxd_debug = 0;
+static int libusbmuxd_debug = 1;
 #ifndef PACKAGE
 #define PACKAGE "libusbmuxd"
 #endif
@@ -1121,6 +1121,7 @@ static void device_monitor_cleanup(void* data)
 static void *device_monitor(void *data)
 {
 	running = 1;
+	pthread_detach(pthread_self());
 	collection_init(&devices);
 	cancelling = 0;
 
