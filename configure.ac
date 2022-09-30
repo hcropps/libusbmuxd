@@ -20,9 +20,9 @@ LIBUSBMUXD_SO_VERSION=6:0:0
 AC_SUBST(LIBUSBMUXD_SO_VERSION)
 
 # Check if we have a version defined
-if test -z $PACKAGE_VERSION; then
-  AC_MSG_ERROR([PACKAGE_VERSION is not defined. Make sure to configure a source tree checked out from git or that .tarball-version is present.])
-fi
+# if test -z $PACKAGE_VERSION; then
+#   AC_MSG_ERROR([PACKAGE_VERSION is not defined. Make sure to configure a source tree checked out from git or that .tarball-version is present.])
+# fi
 
 dnl Minimum package versions
 LIBPLIST_VERSION=2.2.0
