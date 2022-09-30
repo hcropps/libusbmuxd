@@ -120,15 +120,15 @@ esac
 
 m4_ifdef([AM_SILENT_RULES],[AM_SILENT_RULES([yes])])
 
-AC_OUTPUT([
+AC_CONFIG_FILES([
 Makefile
-common/Makefile
 src/Makefile
 include/Makefile
 tools/Makefile
 docs/Makefile
 src/libusbmuxd-2.0.pc
 ])
+AC_OUTPUT
 
 echo "
 Configuration for $PACKAGE $VERSION:
