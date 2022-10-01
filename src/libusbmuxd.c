@@ -124,7 +124,7 @@ static int libusbmuxd_debug = 1;
 #define PACKAGE "libusbmuxd"
 #endif
 //#define LIBUSBMUXD_DEBUG(level, format, ...) if (level <= libusbmuxd_debug) fprintf(stderr, ("[" PACKAGE "] " format), __VA_ARGS__); fflush(stderr);
-#define LIBUSBMUXD_DEBUG(level, format, ...) __android_log_print(ANDROID_LOG_INFO, "libusb-usbmuxd", __VA_ARGS__)
+#define LIBUSBMUXD_DEBUG(level, format, ...) __android_log_print(ANDROID_LOG_INFO, "libusb-usbmuxd",format, __VA_ARGS__)
 #define LIBUSBMUXD_ERROR(format, ...) LIBUSBMUXD_DEBUG(0, format, __VA_ARGS__)
 //#define LIBUSBMUXD_ERROR(...) __android_log_print(ANDROID_LOG_INFO, "libusb-usbmuxd", __VA_ARGS__)
 //#define logAnd(...) __android_log_print(ANDROID_LOG_INFO, "libusb-usbmuxd", __VA_ARGS__)
