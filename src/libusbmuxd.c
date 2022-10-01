@@ -124,7 +124,7 @@ static int libusbmuxd_debug = 1;
 #define PACKAGE "libusbmuxd"
 #endif
 //#define LIBUSBMUXD_DEBUG(level, format, ...) if (level <= libusbmuxd_debug) fprintf(stderr, ("[" PACKAGE "] " format), __VA_ARGS__); fflush(stderr);
-#define LIBUSBMUXD_DEBUG(level, format, ...) __android_log_print(ANDROID_LOG_INFO, "libusb-usbmuxd",format, __VA_ARGS__)
+#define LIBUSBMUXD_DEBUG(level, format, ...) __android_log_print(ANDROID_LOG_INFO, "libusb-libusbmuxd",format, __VA_ARGS__)
 #define LIBUSBMUXD_ERROR(format, ...) LIBUSBMUXD_DEBUG(0, format, __VA_ARGS__)
 //#define LIBUSBMUXD_ERROR(...) __android_log_print(ANDROID_LOG_INFO, "libusb-usbmuxd", __VA_ARGS__)
 //#define logAnd(...) __android_log_print(ANDROID_LOG_INFO, "libusb-usbmuxd", __VA_ARGS__)
@@ -173,9 +173,13 @@ static usbmuxd_device_info_t *devices_find(uint32_t handle)
  */
 static int connect_usbmuxd_socket()
 {
+	LIBUSBMUXD_DEBUG(1, "connect_usbmuxd_socket");
 	int res = -1;
 	char *usbmuxd_socket_addr = getenv("USBMUXD_SOCKET_ADDRESS");
 	if (usbmuxd_socket_addr) {
+		
+		LIBUSBMUXD_DEBUG(1, "usbmuxd_socket_addr %s",usbmuxd_socket_addr);
+		
 		if (strncmp(usbmuxd_socket_addr, "UNIX:", 5) == 0) {
 #if defined(WIN32) || defined(__CYGWIN__)
 			/* not supported, ignore */
@@ -183,6 +187,7 @@ static int connect_usbmuxd_socket()
 			if (usbmuxd_socket_addr[5] != '\0') {
 				res = socket_connect_unix(usbmuxd_socket_addr+5);
 				if (res < 0) {
+					LIBUSBMUXD_DEBUG(1, "connect_usbmuxd_socket 1111");
 					res = -errno;
 				}
 				return res;
@@ -220,6 +225,7 @@ static int connect_usbmuxd_socket()
 #endif
 					free(connect_addr);
 					if (res < 0) {
+						LIBUSBMUXD_DEBUG(1, "connect_usbmuxd_socket 2222");
 						res = -errno;
 					}
 					return res;
@@ -230,10 +236,13 @@ static int connect_usbmuxd_socket()
 	}
 #if defined(WIN32) || defined(__CYGWIN__)
 	res = socket_connect("127.0.0.1", USBMUXD_SOCKET_PORT);
+	LIBUSBMUXD_DEBUG(1, "connect_usbmuxd_socket 4444");
 #else
 	res = socket_connect_unix(USBMUXD_SOCKET_FILE);
+	LIBUSBMUXD_DEBUG(1, "connect_usbmuxd_socket 55555");
 #endif
 	if (res < 0) {
+		LIBUSBMUXD_DEBUG(1, "connect_usbmuxd_socket 3333");
 		res = -errno;
 	}
 	return res;
