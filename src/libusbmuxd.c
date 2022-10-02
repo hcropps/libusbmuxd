@@ -234,7 +234,7 @@ static int connect_usbmuxd_socket()
 			}
 		}
 	}
-#if defined(WIN32) || defined(__CYGWIN__) || defined(__ANDROID__)
+#if defined(WIN32) || defined(__CYGWIN__)
 	res = socket_connect("127.0.0.1", USBMUXD_SOCKET_PORT);
 	LIBUSBMUXD_DEBUG(1, "connect_usbmuxd_socket %s","44444");
 #else
