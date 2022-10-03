@@ -239,6 +239,7 @@ static int connect_usbmuxd_socket()
 	LIBUSBMUXD_DEBUG(1, "connect_usbmuxd_socket %s","44444");
 #else
 	res = socket_connect_unix(USBMUXD_SOCKET_FILE);
+	LIBUSBMUXD_DEBUG(1, "USBMUXD_SOCKET_FILE %s",USBMUXD_SOCKET_FILE);
 	LIBUSBMUXD_DEBUG(1, "connect_usbmuxd_socket %s","55555");
 #endif
 	if (res < 0) {
