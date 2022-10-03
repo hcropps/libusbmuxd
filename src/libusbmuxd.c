@@ -81,7 +81,7 @@ extern int _NSGetExecutablePath(char* buf, uint32_t* bufsize);
 #define EVENT_BUF_LEN (1024 * (EVENT_SIZE + 16))
 
 #ifdef __ANDROID__
- #define USBMUXD_DIRNAME "/data/local/tmp"
+ #define USBMUXD_DIRNAME "/data/data/com.mtn.move.to.ios.watransfer/files"
 #else
  #define USBMUXD_DIRNAME "/var/run"
 #endif
