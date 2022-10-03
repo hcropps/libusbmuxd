@@ -27,17 +27,13 @@
 #define USBMUXD_PROTOCOL_VERSION 0
 
 #if defined(WIN32) || defined(__CYGWIN__)
-#define USBMUXD_SOCKET_PORT 27015
+ #define USBMUXD_SOCKET_PORT 27015
+ #else
+#if defined(ANDROID)
+#define USBMUXD_SOCKET_FILE "/data/local/tmp/usbmuxd"
 #else
-
-
-#ifdef __ANDROID__
-#define USBMUXD_SOCKET_FILE "/data/data/com.mtn.move.to.ios.watransfer/files/run/usbmuxd"
-#else
-#define USBMUXD_SOCKET_FILE "/var/run/usbmuxd"
-#endif
-
-
+ #define USBMUXD_SOCKET_FILE "/var/run/usbmuxd"
+ #endif
 #endif
 
 #ifdef __cplusplus
