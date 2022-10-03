@@ -29,8 +29,8 @@
 #if defined(WIN32) || defined(__CYGWIN__)
  #define USBMUXD_SOCKET_PORT 27015
  #else
-#if defined(ANDROID)
-#define USBMUXD_SOCKET_FILE "/data/local/tmp/usbmuxd"
+#if defined(ANDROID) || defined(__ANDROID__)
+ #define USBMUXD_SOCKET_FILE "/data/local/tmp/usbmuxd"
 #else
  #define USBMUXD_SOCKET_FILE "/var/run/usbmuxd"
  #endif
